@@ -27,7 +27,7 @@ const ScrollHeroSection = () => {
         className="flex flex-col md:flex-row items-center max-w-5xl mx-auto gap-10"
         data-aos="fade-right"
       >
-        <image
+        <img
           src="/images/mountain.webp"
           alt="Mountains"
           className="rounded-lg w-full md:w-1/2 shadow-xl"
@@ -37,7 +37,7 @@ const ScrollHeroSection = () => {
             🏔 Mountain Adventures
           </h2>
           <p className="text-gray-600">
-            Discover peace and thrill in the world's most stunning mountain
+            Discover peace and thrill in the world&apos;s most stunning mountain
             ranges. Perfect for hiking, skiing, or just breathing fresh air.
           </p>
         </div>
@@ -48,7 +48,7 @@ const ScrollHeroSection = () => {
         className="flex flex-col md:flex-row-reverse items-center max-w-5xl mx-auto gap-10"
         data-aos="fade-left"
       >
-        <image
+        <img
           src="/images/beach.jpg"
           alt="Beach"
           className="rounded-lg w-full md:w-1/2 shadow-xl"
