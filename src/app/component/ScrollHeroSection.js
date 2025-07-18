@@ -42,7 +42,7 @@ const ScrollHeroSection = () => {
             🏔 Mountain Adventures
           </h2>
           <p className="text-gray-600">
-            Discover peace and thrill in the world's most stunning mountain
+            Discover peace and thrill in the world&apos;s most stunning mountain
             ranges. Perfect for hiking, skiing, or just breathing fresh air.
           </p>
         </div>
