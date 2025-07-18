@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import Image from "next/image";
 
 const blogs = [
   {
@@ -58,11 +59,14 @@ const BlogCard = ({ blog, onClick }) => (
   >
     <div className="relative w-full h-full transition-transform duration-700 preserve-3d hover:rotate-y-45">
       {/* Front */}
-      <div className="absolute w-full h-full backface-hidden rounded-lg shadow-lg overflow-hidden">
-        <img
+      <div className="absolute w-full h-full backface-hidden rounded-lg shadow-lg overflow-hidden relative">
+        <Image
           src={blog.image}
           alt={blog.title}
-          className="w-full h-full object-cover"
+          fill
+          style={{ objectFit: "cover" }}
+          priority={true}
+          sizes="(max-width: 640px) 100vw, 300px"
         />
       </div>
       {/* Back */}
@@ -93,11 +97,15 @@ const BlogModal = ({ blog, onClose }) => {
         >
           ×
         </button>
-        <img
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-60 object-cover rounded mb-4"
-        />
+        <div className="relative w-full h-60 rounded mb-4 overflow-hidden">
+          <Image
+            src={blog.image}
+            alt={blog.title}
+            fill
+            style={{ objectFit: "cover" }}
+            priority={true}
+          />
+        </div>
         <ReactMarkdown
           components={{
             h1: ({ node, ...props }) => (
@@ -113,8 +121,17 @@ const BlogModal = ({ blog, onClose }) => {
               <ul className="list-disc pl-6 space-y-1 mb-2" {...props} />
             ),
             li: ({ node, ...props }) => <li {...props} />,
+            // Use next/image inside markdown images with fixed size or responsive
             img: ({ node, ...props }) => (
-              <img className="rounded-md my-4 w-full" alt="" {...props} />
+              <div className="relative my-4 w-full h-64 rounded-md overflow-hidden">
+                <Image
+                  alt={props.alt || ""}
+                  src={props.src}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="100vw"
+                />
+              </div>
             ),
             strong: ({ node, ...props }) => (
               <strong className="font-semibold text-black" {...props} />
