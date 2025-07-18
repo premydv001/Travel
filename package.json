@@ -1,0 +1,35 @@
+{
+  "name": "travel",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.1.1",
+    "aos": "^2.3.4",
+    "framer-motion": "^12.23.6",
+    "geist": "^1.4.2",
+    "leaflet": "^1.9.4",
+    "leaflet-defaulticon-compatibility": "^0.1.2",
+    "next": "15.4.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.60.0",
+    "react-hot-toast": "^2.5.2",
+    "react-leaflet": "^5.0.0",
+    "react-markdown": "^10.1.0",
+    "swiper": "^11.2.10",
+    "yup": "^1.6.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.1",
+    "tailwindcss": "^4"
+  }
+}
