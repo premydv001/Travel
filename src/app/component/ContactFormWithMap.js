@@ -14,7 +14,7 @@ const schema = yup.object().shape({
   message: yup.string().min(10, "Message must be at least 10 characters"),
 });
 
-function ContactFormWithMap() {
+const ContactFormWithMap = () => {
   const {
     register,
     handleSubmit,
@@ -30,21 +30,22 @@ function ContactFormWithMap() {
     reset();
   };
 
-  // Dynamically load Leaflet only on client
-  const [Map, setMap] = useState(null);
+  // Dynamically load Leaflet components on the client only
+  const [MapComponent, setMapComponent] = useState(null);
+
   useEffect(() => {
     (async () => {
-      const L = await import("leaflet");
       await import("leaflet/dist/leaflet.css");
       await import("leaflet-defaulticon-compatibility");
       await import(
         "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css"
       );
+
       const { MapContainer, TileLayer, Marker, Popup } = await import(
         "react-leaflet"
       );
 
-      setMap(() => () => (
+      const Component = () => (
         <MapContainer
           center={position}
           zoom={13}
@@ -59,7 +60,9 @@ function ContactFormWithMap() {
             <Popup>We are located in Hazaribagh, Jharkhand 🏢</Popup>
           </Marker>
         </MapContainer>
-      ));
+      );
+
+      setMapComponent(() => Component);
     })();
   }, []);
 
@@ -74,10 +77,14 @@ function ContactFormWithMap() {
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="text-sm text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="name"
+              className="text-sm text-gray-700 dark:text-gray-300"
+            >
               Name
             </label>
             <input
+              id="name"
               type="text"
               {...register("name")}
               className="w-full mt-1 p-2 border rounded dark:bg-gray-700 dark:text-white"
@@ -87,10 +94,14 @@ function ContactFormWithMap() {
             )}
           </div>
           <div>
-            <label className="text-sm text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="email"
+              className="text-sm text-gray-700 dark:text-gray-300"
+            >
               Email
             </label>
             <input
+              id="email"
               type="email"
               {...register("email")}
               className="w-full mt-1 p-2 border rounded dark:bg-gray-700 dark:text-white"
@@ -100,10 +111,14 @@ function ContactFormWithMap() {
             )}
           </div>
           <div>
-            <label className="text-sm text-gray-700 dark:text-gray-300">
+            <label
+              htmlFor="message"
+              className="text-sm text-gray-700 dark:text-gray-300"
+            >
               Message
             </label>
             <textarea
+              id="message"
               {...register("message")}
               rows="4"
               className="w-full mt-1 p-2 border rounded dark:bg-gray-700 dark:text-white"
@@ -123,14 +138,14 @@ function ContactFormWithMap() {
 
       {/* Map Section */}
       <div className="w-full md:w-1/2">
-        {Map ? (
-          <Map />
+        {MapComponent ? (
+          <MapComponent />
         ) : (
           <div className="h-72 w-full bg-gray-300 rounded animate-pulse" />
         )}
       </div>
     </div>
   );
-}
+};
 
 export default ContactFormWithMap;
