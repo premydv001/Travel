@@ -17,7 +17,7 @@ function Logo() {
       <div className="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="flex items-center space-x-2">
-          <img
+          <image
             src="https://flowbite.com/docs/images/logo.svg"
             className="h-8"
             alt="Logo"

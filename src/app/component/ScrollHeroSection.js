@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect } from "react";
 import AOS from "aos";
@@ -27,7 +27,7 @@ const ScrollHeroSection = () => {
         className="flex flex-col md:flex-row items-center max-w-5xl mx-auto gap-10"
         data-aos="fade-right"
       >
-        <img
+        <image
           src="/images/mountain.webp"
           alt="Mountains"
           className="rounded-lg w-full md:w-1/2 shadow-xl"
@@ -48,7 +48,7 @@ const ScrollHeroSection = () => {
         className="flex flex-col md:flex-row-reverse items-center max-w-5xl mx-auto gap-10"
         data-aos="fade-left"
       >
-        <img
+        <image
           src="/images/beach.jpg"
           alt="Beach"
           className="rounded-lg w-full md:w-1/2 shadow-xl"

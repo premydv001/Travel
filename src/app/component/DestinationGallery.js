@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 import React, { useState } from "react";
 
 // Dummy destination data — add/modify fields as needed.
@@ -56,7 +55,7 @@ const Modal = ({ destination, onClose }) => {
         >
           ×
         </button>
-        <img
+        <image
           src={destination.image}
           alt={destination.title}
           className="w-full h-64 object-cover rounded"
@@ -80,7 +79,7 @@ const DestinationCard = ({ destination, onClick }) => {
       className="relative overflow-hidden rounded-lg shadow-md cursor-pointer transform transition duration-300 hover:scale-105"
       onClick={() => onClick(destination)}
     >
-      <img
+      <image
         src={destination.image}
         alt={destination.title}
         className="w-full h-64 object-cover"

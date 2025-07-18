@@ -44,13 +44,19 @@ Unwind on golden sands and swim in crystal-clear waters.
   },
 ];
 
-// Flip card component
+// CSS classes for flip animation (you need to add these to your global CSS or tailwind config):
+// .perspective { perspective: 1000px; }
+// .preserve-3d { transform-style: preserve-3d; }
+// .backface-hidden { backface-visibility: hidden; }
+// .rotate-y-180 { transform: rotateY(180deg); }
+// .hover-rotate-y-45:hover { transform: rotateY(45deg); }
+
 const BlogCard = ({ blog, onClick }) => (
   <div
     className="w-full sm:w-[300px] h-[380px] cursor-pointer perspective"
     onClick={() => onClick(blog)}
   >
-    <div className="relative w-full h-full transition-transform duration-700 transform-style preserve-3d hover:rotate-y-45">
+    <div className="relative w-full h-full transition-transform duration-700 preserve-3d hover:rotate-y-45">
       {/* Front */}
       <div className="absolute w-full h-full backface-hidden rounded-lg shadow-lg overflow-hidden">
         <img
@@ -68,7 +74,6 @@ const BlogCard = ({ blog, onClick }) => (
   </div>
 );
 
-// Modal component for blog detail
 const BlogModal = ({ blog, onClose }) => {
   if (!blog) return null;
 
@@ -84,6 +89,7 @@ const BlogModal = ({ blog, onClose }) => {
         <button
           className="absolute top-2 right-4 text-xl text-gray-500 hover:text-black"
           onClick={onClose}
+          aria-label="Close modal"
         >
           ×
         </button>

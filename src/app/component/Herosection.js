@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -26,11 +27,15 @@ const HeroSection = () => {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <img
-              src={slide.url}
-              alt={slide.alt}
-              className="w-full h-screen object-cover"
-            />
+            <div className="relative w-full h-screen">
+              <Image
+                src={slide.url}
+                alt={slide.alt}
+                fill
+                style={{ objectFit: "cover" }}
+                priority={true}
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
